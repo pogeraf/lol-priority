@@ -8,7 +8,7 @@ require_once("classes/Priority.php");
 use classes\Champion;
 use classes\Priority;
 
-$champ = Champion::findByName('Ashe');
+$champ = Champion::findByName('kalista');
 
 if (!$champ->getName()) {
     echo "Чемпион не найден";

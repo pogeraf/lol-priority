@@ -7,7 +7,7 @@ class Priority extends ClassesAdapter
     public static function getChampionPriority($championName) 
     {
         $connection = SqlDatabase::createConnection();
-        return $connection->query(
+        return ($result = $connection->query(
             "SELECT
                lc.name       AS champion,
                lp.name       AS priority,
@@ -17,6 +17,6 @@ class Priority extends ClassesAdapter
              LEFT JOIN lg_priority       lp  ON lp.priority_id = lcp.priority_id
              WHERE lc.`name` LIKE '%{$championName}%'
              ORDER BY lcp.priority_id, lc.name"
-        )->fetch_all();
+        )) ? $result->fetch_all() : "Ошибка запроса";
     }
 }
