@@ -1,8 +1,8 @@
 <?php
 
-namespace classes\database;
+namespace classes;
 
-class Table extends Connector
+class Table extends SqlDatabase
 {
     /** @var \mysqli  */
     private $_connector;

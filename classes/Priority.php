@@ -2,13 +2,11 @@
 
 namespace classes;
 
-use classes\database\Connector;
-
 class Priority extends ClassesAdapter
 {    
     public static function getChampionPriority($championName) 
     {
-        $connection = Connector::createConnection();
+        $connection = SqlDatabase::createConnection();
         return $connection->query(
             "SELECT
                lc.name       AS champion,

@@ -2,8 +2,6 @@
 
 namespace classes;
 
-use classes\database\Table;
-
 class Champion extends ClassesAdapter
 {
     /** @var Table  */

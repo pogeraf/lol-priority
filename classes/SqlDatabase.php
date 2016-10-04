@@ -1,10 +1,8 @@
 <?php
 
-namespace classes\database;
+namespace classes;
 
-use classes\ClassesAdapter;
-
-abstract class Connector extends ClassesAdapter
+abstract class SqlDatabase extends ClassesAdapter
 {
     const HOST     = '192.168.0.199';
     const USER     = 'root';
