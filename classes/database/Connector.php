@@ -15,5 +15,4 @@ abstract class Connector extends ClassesAdapter
     {
         return new \mysqli(self::HOST, self::USER, self::PASSWORD, self::DATABASE);
     }
-
 }

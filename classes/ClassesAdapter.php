@@ -21,5 +21,8 @@ abstract class ClassesAdapter
      * @param  int|string   $key
      * @return array|string
      */
-    public abstract function getError($key = null);
+    public function getError($key = null)
+    {
+        return $key ? $this->_errors[$key] : $this->_errors;
+    }
 }

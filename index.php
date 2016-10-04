@@ -1,5 +1,8 @@
 <?php
 
+require_once("classes/database/Connector.php");
+require_once("classes/database/Table.php");
+require_once("classes/ClassesAdapter.php");
 require_once("classes/Champion.php");
 require_once("classes/Priority.php");
 

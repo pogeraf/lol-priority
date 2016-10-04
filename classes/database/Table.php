@@ -1,7 +1,6 @@
 <?php
 
 namespace classes\database;
-require_once("Connector.php");
 
 class Table extends Connector
 {
@@ -32,14 +31,14 @@ class Table extends Connector
         $query = $this->_connector->query(
             "SELECT * FROM {$this->_tableName} {$where}"
         );
+        if ($query === false) {
+            $this->addError("Unknown table {$this->_tableName}");
+        } else {
+            $result = $query->fetch_all();
+        }
         if ($err = $this->_connector->error) {
             $this->addError($err);
-        } 
-        return !$this->hasErrors() ? $query : false;
-    }
-    
-    public function getError($key = null)
-    {
-        return $key ? $this->_errors[$key] : $this->_errors;
+        }
+        return !$this->hasErrors() ? $result : false;
     }
 }

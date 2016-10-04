@@ -1,8 +1,6 @@
 <?php
 
 namespace classes;
-require_once("ClassesAdapter.php");
-require_once("database/Table.php");
 
 use classes\database\Table;
 
@@ -28,8 +26,8 @@ class Champion extends ClassesAdapter
     public static function findByName($name)
     {
         $table   = new Table('lg_champion');
-        $content = $table->getTableContent(['name' => $name])->fetch_row();
-        return !$table->hasErrors() ? new static($content[0], $content[1], $content[2]) : false;
+        $content = $table->getTableContent(['name' => $name])[0];
+        return new static($content[0], $content[1], $content[2]);
     }
 
     /**
@@ -54,10 +52,5 @@ class Champion extends ClassesAdapter
     public function getInfo()
     {
         return $this->_info;
-    }
-
-    public function getError($key = null)
-    {
-        return $key ? $this->_errors[$key] : $this->_errors;
     }
 }

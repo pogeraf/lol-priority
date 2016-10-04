@@ -3,7 +3,6 @@
 namespace classes;
 
 use classes\database\Connector;
-use classes\database\Table;
 
 class Priority extends ClassesAdapter
 {    
@@ -21,10 +20,5 @@ class Priority extends ClassesAdapter
              WHERE lc.`name` LIKE '%{$championName}%'
              ORDER BY lcp.priority_id, lc.name"
         )->fetch_all();
-    }
-
-    public function getError($key = null)
-    {
-        return $key ? $this->_errors[$key] : $this->_errors;
     }
 }
