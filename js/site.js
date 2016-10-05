@@ -11,14 +11,17 @@ function getPriority() {
     {
         if (rqst.readyState == 4 && rqst.status == 200)
         {
-            var ans = rqst.responseText;
+            var ans  = rqst.responseText;
+            var resp = JSON.parse(ans);
             console.log(ans);
+            console.log(resp);
             var output = document.getElementById("output");
             if (output) {
                 output.innerHTML = ans;
             }
         }
     };
-    rqst.open("get","scripts/get-priority.php?champion=" + el, true);
+    console.log(el);
+    rqst.open("get","scenarios/get-priority.php?champion=" + el, true);
     rqst.send();
 }
