@@ -4,10 +4,11 @@
     <script src="js/site.js"></script>
 </head>
 <body>
-<!--<form>-->
+<div id="body">
     <input name="champion" class="champion">
-    <div onclick="getPriority()">Отправить</div>
-<!--</form>-->
+    <span onclick="getPriority()">Отправить</span>
+    <br><span onclick="clearOutput()" class="cl-btn" hidden>Очистить</span>
+</div>
 <div id="output"></div>
 </body>
 </html>

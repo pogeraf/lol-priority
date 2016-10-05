@@ -25,4 +25,25 @@ function getPriority() {
     console.log(el);
     rqst.open("get","scenarios/get-priority.php?champion=" + el, true);
     rqst.send();
+    setClearButton();
+}
+
+function clearOutput() {
+    var output = document.getElementById("output");
+    if (output) {
+        output.innerHTML = '';
+    }
+    var clBtn  = document.getElementsByClassName("cl-btn");
+    var len    = clBtn.length;
+    for (var i = 0; i < len; i++) {
+        clBtn[i].setAttribute('hidden', false);
+    }
+}
+
+function setClearButton() {
+    var clBtn  = document.getElementsByClassName("cl-btn");
+    var len = clBtn.length;
+    for (var i = 0; i < len; i++) {
+        clBtn[i].removeAttribute('hidden');
+    }
 }
