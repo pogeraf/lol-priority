@@ -17,7 +17,8 @@ function getPriority() {
             console.log(resp);
             var output = document.getElementById("output");
             if (output) {
-                output.innerHTML = ans;
+                var content = output.innerHTML;
+                output.innerHTML = ans+ "<br>" + content;
             }
         }
     };

@@ -9,8 +9,8 @@ require_once("../classes/Priority.php");
 use classes\Champion;
 use classes\Priority;
 
-$name = trim($_GET['champion']);
-$name = str_replace("'", " ", $name);
+$nameGet = trim($_GET['champion']);
+$name    = str_replace("'", " ", $nameGet);
 if (preg_match("/^[a-zA-Z\-\s\.]+$/", $name)) {
     $champ = Champion::findByName($name);
 
@@ -21,7 +21,7 @@ if (preg_match("/^[a-zA-Z\-\s\.]+$/", $name)) {
         $data = '[';
         if ($size = sizeof($chPr)) {
             foreach ($chPr as $key => $item) {
-                $data .= '["' . $item[1] . '", "' . $item[2] . '"]';
+                $data .= '["' . $nameGet . '","'. $item[1] . '","' . $item[2] . '"]';
                 $data .= $key + 1 < $size ? ',' : '';
             }
         }
