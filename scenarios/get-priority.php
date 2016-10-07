@@ -9,7 +9,7 @@ require_once("../classes/Priority.php");
 use classes\Champion;
 use classes\Priority;
 
-$nameGet = trim($_GET['champion']);
+$nameGet = trim($_POST['champion']);
 if ($nameGet) {
     $name = str_replace("'", " ", $nameGet);
     if (preg_match("/^[a-zA-Z\-\s\.]+$/", $name)) {

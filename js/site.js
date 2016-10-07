@@ -23,8 +23,9 @@ function getPriority() {
         }
     };
     console.log(el);
-    rqst.open("get","scenarios/get-priority.php?champion=" + el, true);
-    rqst.send();
+    rqst.open("post","scenarios/get-priority.php", true);
+    rqst.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    rqst.send('champion= ' + el);
     setClearButton();
 }
 
