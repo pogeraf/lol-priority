@@ -6,10 +6,14 @@ abstract class ClassesAdapter
 {
     /** @var array  */
     protected $_errors = [];
-    
-    protected function addError($error, $key = null)
+
+    /**
+     * @param string        $error
+     * @param string|null   $key
+     */
+    protected function addError(string $error, string $key = null)
     {
-        is_string($key) ? $this->_errors[$key] = $error : $this->_errors[] = $error;
+        !is_null($key) ? $this->_errors[$key] = $error : $this->_errors[] = $error;
     }
     
     public function hasErrors()

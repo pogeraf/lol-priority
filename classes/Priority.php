@@ -6,7 +6,7 @@ class Priority extends ClassesAdapter
 {    
     public static function getChampionPriority($championName) 
     {
-        $tbl   =
+        $tbl =
             "SELECT
                lc.name       AS champion,
                lp.name       AS priority,

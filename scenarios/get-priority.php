@@ -9,12 +9,10 @@ require_once("../classes/Priority.php");
 use classes\Champion;
 use classes\Priority;
 
-$nameGet = trim($_POST['champion']);
-if ($nameGet) {
-    $name = str_replace("'", " ", $nameGet);
-    if (preg_match("/^[a-zA-Z\-\s\.]+$/", $name)) {
+$name = trim($_POST['champion']);
+if ($name) {
+    if (preg_match("/^[a-zA-Z\-\s\.\']+$/", $name)) {
         $champ = Champion::findByName($name);
-
         if (!$champ->getName()) {
             echo '["Чемпион не найден"]';
         } else {
@@ -22,7 +20,7 @@ if ($nameGet) {
             $data = '[';
             if ($size = sizeof($chPr)) {
                 foreach ($chPr as $key => $item) {
-                    $data .= '["' . $nameGet . '","' . $item[1] . '","' . $item[2] . '"]';
+                    $data .= '["' . $champ->getName() . '","' . $item[1] . '","' . $item[2] . '"]';
                     $data .= $key + 1 < $size ? ',' : '';
                 }
             }

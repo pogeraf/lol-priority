@@ -5,7 +5,7 @@ namespace classes;
 class Champion extends ClassesAdapter
 {
     /** @var Table  */
-    private $_table;
+    private static $_table;
     /** @var  integer */
     private $_id;
     /** @var string  */
@@ -18,7 +18,7 @@ class Champion extends ClassesAdapter
         $this->_id    = $id;
         $this->_name  = $name;
         $this->_info  = $info;
-        $this->_table = new Table('lg_champion');
+        self::$_table = new Table('lg_champion');
     }
     
     public static function findByName($name)
@@ -26,6 +26,17 @@ class Champion extends ClassesAdapter
         $table   = new Table('lg_champion');
         $content = $table->getTableContent(['name' => $name])[0];
         return new static($content[0], $content[1], $content[2]);
+    }
+    
+    public static function getChampions()
+    {
+        $table     = new Table('lg_champion');
+        $content   = $table->getTableContent();
+        $champions = [];
+        foreach ($content as $champ) {
+            $champions[] = new static($champ[0], $champ[1], $champ[2]);
+        }
+        return $champions;
     }
 
     /**
