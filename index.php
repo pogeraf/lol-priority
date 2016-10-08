@@ -27,3 +27,4 @@ require_once("classes/Champion.php");
 <div id="output"></div>
 </body>
 </html>
+<!--Васим-->
