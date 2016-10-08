@@ -21,7 +21,7 @@ class Table extends SqlDatabase
         }
     }
 
-    public function getTableContent($params = [], $columns = [])
+    public function getTableContent($params = [], $columns = [], string $order = '')
     {
         $where = "";
         if (!empty($params)) {
@@ -30,9 +30,10 @@ class Table extends SqlDatabase
             }
             $where = " WHERE " . implode(" AND ", $whereParams);
         }
-        $cols  = empty($columns) ? " * " : implode(", ", $columns);
-        $table = $this->_much ? "({$this->_table})" : $this->_table;
-        $query = "SELECT {$cols} FROM {$table} t {$where}";
+        $cols    = empty($columns) ? " * " : implode(", ", $columns);
+        $table   = $this->_much ? "({$this->_table})" : $this->_table;
+        $orderBy = $order ? " ORDER BY {$order}" : " ";
+        $query = "SELECT {$cols} FROM {$table} t {$where} {$orderBy}";
         $res   = $this->_connector->query($query);
 
         if ($res === false) {

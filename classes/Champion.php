@@ -31,7 +31,7 @@ class Champion extends ClassesAdapter
     public static function getChampions()
     {
         $table     = new Table('lg_champion');
-        $content   = $table->getTableContent();
+        $content   = $table->getTableContent([], [], 'name');
         $champions = [];
         foreach ($content as $champ) {
             $champions[] = new static($champ[0], $champ[1], $champ[2]);
